@@ -20,3 +20,21 @@ This means that for every field I will need this div which displays the errors i
 All this directive does is that adds the div at runtime to the html, hence reducing the clutter in html. And if in future you decide to change the style of your filed validation error messages all you need to change is the directive.
 
 For example, to use [clarity field validation error messages](https://vmware.github.io/clarity/documentation/input-fields) you can use display-clr-error directive. https://plnkr.co/bAP4qn/
+
+## How to use
+* Copy these two files([clarity-field-error.component.ts](https://github.com/nikhildhankani/display-error-directive/blob/master/clarity-field-error.component.ts) and [display-clr-error.ts](https://github.com/nikhildhankani/display-error-directive/blob/master/display-clr-error.ts) ) in your project.
+* Import them in your root module, and add the display component(ClarityFieldError) in your entryComponents
+```javascript
+@NgModule({
+  imports: [
+    ....
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  declarations: [
+    ...
+    DisplayClarityErrorDirective,
+    ClarityFieldError
+  ],
+  entryComponents:[ClarityFieldError]
+```
