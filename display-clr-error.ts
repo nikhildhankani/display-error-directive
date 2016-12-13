@@ -1,6 +1,6 @@
 import { Directive, Input, Injector } from '@angular/core';
 import { TemplateRef, ViewContainerRef, ComponentFactoryResolver, ComponentRef } from '@angular/core';
-import { ClarityFieldError } from './field-error.component.ts';
+import { ClarityFieldError } from './clarity-field-error.component.ts';
 
 @Directive({ selector: '[displayClrError]' })
 export class DisplayClarityErrorDirective {
