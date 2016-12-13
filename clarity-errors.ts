@@ -1,6 +1,6 @@
 import { Directive, Input, Injector } from '@angular/core';
 import { TemplateRef, ViewContainerRef, ComponentFactoryResolver, ComponentRef } from '@angular/core';
-import { FieldError } from './field-error.component.ts';
+import { ClarityFieldError } from './field-error.component.ts';
 
 @Directive({ selector: '[displayErrors]' })
 export class DisplayErrorsDirective {
@@ -15,7 +15,7 @@ export class DisplayErrorsDirective {
   
   @Input() set displayErrors(error: string){
     if(!this._instance) {
-      let factory = this.crf.resolveComponentFactory(FieldError);
+      let factory = this.crf.resolveComponentFactory(ClarityFieldError);
       this._componentReference = factory.create(this.injector);
       this._instance = this._componentReference.instance;
       this._instance.templateToBeReplaced.createEmbeddedView(this.templateRef);
