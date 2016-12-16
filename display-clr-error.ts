@@ -1,7 +1,12 @@
 import { Directive, Input,Injector } from '@angular/core';
-import { TemplateRef, ViewContainerRef, ComponentFactoryResolver, ComponentRef } from '@angular/core';
-import { ClrErrorComponent } from './clr-error-template.component';
-
+import { TemplateRef, 
+          ViewContainerRef, 
+          ComponentFactoryResolver, 
+          ComponentRef,
+          Component,
+          ViewChild
+    } from '@angular/core';
+    
 @Directive({ selector: '[displayClrErrors]' })
 export class DisplayClrErrorsDirective {
   constructor( private templateRef: TemplateRef<any>,
@@ -23,4 +28,17 @@ export class DisplayClrErrorsDirective {
     this._instance.error = error;
     this.viewContainer.insert(this._componentReference.hostView);
   }
+}
+
+@Component({
+  template: '<label aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="error && error.length>0">'+
+                      '<template #t1></template>'+
+                      '<span [hidden]="!(error && error.length>0)" class="tooltip-content">'+
+                         '{{error}}'
+                      +'</span>'+
+                 '</label>'
+})
+export class ClrErrorComponent {
+  error:string='';
+  @ViewChild("t1", { read: ViewContainerRef }) templateToBeReplaced;
 }
