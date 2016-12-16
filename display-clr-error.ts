@@ -1,9 +1,9 @@
-import { Directive, Input, Injector } from '@angular/core';
+import { Directive, Input,Injector } from '@angular/core';
 import { TemplateRef, ViewContainerRef, ComponentFactoryResolver, ComponentRef } from '@angular/core';
-import { ClarityFieldError } from './clarity-field-error.component.ts';
+import { ClrErrorComponent } from './clr-error-template.component';
 
-@Directive({ selector: '[displayClrError]' })
-export class DisplayClarityErrorDirective {
+@Directive({ selector: '[displayClrErrors]' })
+export class DisplayClrErrorsDirective {
   constructor( private templateRef: TemplateRef<any>,
   private viewContainer: ViewContainerRef,
   private crf: ComponentFactoryResolver,
@@ -13,9 +13,9 @@ export class DisplayClarityErrorDirective {
   _componentReference:ComponentRef;
   _instance;
   
-  @Input() set displayErrors(error: string){
+  @Input() set displayClrErrors(error: string){
     if(!this._instance) {
-      let factory = this.crf.resolveComponentFactory(ClarityFieldError);
+      let factory = this.crf.resolveComponentFactory(ClrErrorComponent);
       this._componentReference = factory.create(this.injector);
       this._instance = this._componentReference.instance;
       this._instance.templateToBeReplaced.createEmbeddedView(this.templateRef);
