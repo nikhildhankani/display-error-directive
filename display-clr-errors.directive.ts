@@ -15,7 +15,7 @@ export class DisplayClrErrorsDirective {
   private injector: Injector) {
   }
 
-  _componentReference:ComponentRef;
+  _componentReference:ComponentRef<ClrErrorComponent>;
   _instance;
   
   @Input() set displayClrErrors(error: string){
